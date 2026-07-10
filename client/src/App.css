@@ -1,0 +1,157 @@
+/* ==========================================================
+   Shopping-site style animal carousel
+   Add this to your existing App.css (replaces the last
+   carousel CSS you had for .animals / .animal / arrows)
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+body {
+  background: linear-gradient(160deg, #eef5ff 0%, #f7f0ff 50%, #fff0f6 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+.card h1 {
+  font-family: 'Fredoka', sans-serif;
+}
+
+/* ----- Carousel outer frame ----- */
+.carousel-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+/* ----- Scrollable strip (the .animals div) ----- */
+.animals {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 340px;
+  cursor: grab;
+
+  /* hide scrollbar across browsers, this is a "swipe" carousel not a scroll list */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.animals::-webkit-scrollbar {
+  display: none;
+}
+.animals.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none; /* disable snap while actively dragging for a smoother feel */
+}
+
+/* ----- Each animal "product card" ----- */
+.animal {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 2rem 1.75rem 1.75rem;
+  box-shadow: 0 20px 40px -12px rgba(80, 60, 140, 0.18);
+  text-align: center;
+  user-select: none; /* prevents text-selection while dragging */
+}
+
+.animal-emoji {
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.animal h2 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.6rem;
+  margin: 0 0 0.5rem;
+  color: #241c3d;
+}
+
+.animal-badge {
+  display: inline-block;
+  background: #ece3ff;
+  color: #6b46c1;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.animal p {
+  margin: 0.35rem 0;
+  color: #524a63;
+  font-size: 0.95rem;
+}
+
+.animal p strong {
+  color: #241c3d;
+}
+
+/* ----- Re-home CTA button ----- */
+.animal button {
+  margin-top: 1.25rem;
+  background: #ff6b81;
+  color: white;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px -6px rgba(255, 107, 129, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.animal button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -6px rgba(230, 210, 255, 0.65);;
+}
+.animal button:active {
+  transform: translateY(0);
+}
+
+/* ----- Arrow buttons ----- */
+.carousel-btn {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  font-size: 1.4rem;
+  color: #6b46c1;
+  cursor: pointer;
+  box-shadow: 0 8px 20px -8px rgba(80, 60, 140, 0.35);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.carousel-btn:hover {
+  background: #f3ecff;
+  transform: scale(1.08);
+}
+
+/* ----- Dots ----- */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  border: none;
+  background: #d8cff5;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.dot-active {
+  background: #6b46c1;
+  width: 1.4rem;
+}
